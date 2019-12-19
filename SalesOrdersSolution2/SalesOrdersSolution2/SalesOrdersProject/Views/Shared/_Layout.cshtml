@@ -1,0 +1,75 @@
+﻿<head>
+    <meta name="viewport" content="width=" device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://www.sefiles.net/merchant/2178/css/cindy/themes/theme_Responsive_Theme_2018.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://www.momentumcycles.com/includes/responsive/cindy/css/cindy-template.css?v=84e0eaa">
+    <link rel="stylesheet" href="https://www.momentumcycles.com/includes/responsive/common/css/se-structure.css?v=84e0eaa">
+    <link rel="icon" type="image/x-icon" href="https://www.sefiles.net/merchant/2178/favicons/faviconwhite.ico" />
+</head>
+<body>
+    <div id="header" class="title">
+        <h1>The Bike Shop</h1>
+    </div>
+    <br />
+    <div id="main">
+        <div id="topnav" style="float:left; width:100%">
+            @Html.ActionLink("Home", "Index", "Home")
+            @Html.ActionLink("About", "About", "Home")
+            @Html.ActionLink("Contact","Contact","Home")
+            @Html.ActionLink("Shop", "Index", "Shop")
+            @Html.ActionLink("Cart", "Index", "ShoppingCart")
+            <p id="right">
+                @Html.ActionLink("Login", "Index", "Login")
+            @Html.ActionLink("Register", "Index", "Register")
+        </p>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer style="font-weight:bold;text-align:center">
+            <p>&copy; @DateTime.Now.Year | All Rights Reserved | @Html.ActionLink("The Bike Shop", "Index", "Home")</p>
+        </footer>
+    </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+</body>
+<style>
+    #topnav {
+        background-color: black;
+        height: 52px;
+    }
+
+        #topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+            #topnav a:hover {
+                background-color: #313030;
+                color: lightgrey;
+            }
+
+            #topnav a.active {
+                background-color: gray;
+                color: white;
+            }
+
+    #right {
+        float: right;
+    }
+
+    .title {
+        height: 75px;
+        background-size: cover;
+        background-image: url(https://projectrecycle.org/wp-content/uploads/sites/8/2019/06/New-Shop-1.jpg);
+    }
+</style>

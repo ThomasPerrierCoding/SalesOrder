@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SalesOrdersDatabaseModelStoreContainer" CdmEntityContainer="SalesOrdersDatabaseEntities2">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="SalesOrdersDatabaseModel.Category">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryDescription" ColumnName="CategoryDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="SalesOrdersDatabaseModel.Customer">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
+          <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
+          <ScalarProperty Name="CustomerStreetAddress" ColumnName="CustomerStreetAddress" />
+          <ScalarProperty Name="CustomerCity" ColumnName="CustomerCity" />
+          <ScalarProperty Name="CustomerState" ColumnName="CustomerState" />
+          <ScalarProperty Name="CustomerZipCode" ColumnName="CustomerZipCode" />
+          <ScalarProperty Name="CustomerAreaCode" ColumnName="CustomerAreaCode" />
+          <ScalarProperty Name="CustomerPhoneNumber" ColumnName="CustomerPhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="SalesOrdersDatabaseModel.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="EmployeeFirstName" ColumnName="EmployeeFirstName" />
+          <ScalarProperty Name="EmployeeLastName" ColumnName="EmployeeLastName" />
+          <ScalarProperty Name="EmployeeStreetAddress" ColumnName="EmployeeStreetAddress" />
+          <ScalarProperty Name="EmployeeCity" ColumnName="EmployeeCity" />
+          <ScalarProperty Name="EmployeeState" ColumnName="EmployeeState" />
+          <ScalarProperty Name="EmployeeZipCode" ColumnName="EmployeeZipCode" />
+          <ScalarProperty Name="EmployeeAreaCode" ColumnName="EmployeeAreaCode" />
+          <ScalarProperty Name="EmployeePhoneNumber" ColumnName="EmployeePhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="SalesOrdersDatabaseModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="OrderDetailQuotedPrice" ColumnName="OrderDetailQuotedPrice" />
+          <ScalarProperty Name="OrderDetailQuantityOrdered" ColumnName="OrderDetailQuantityOrdered" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="SalesOrdersDatabaseModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="OrderShipDate" ColumnName="OrderShipDate" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="SalesOrdersDatabaseModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductDescShort" ColumnName="ProductDescShort" />
+          <ScalarProperty Name="ProductDescLong" ColumnName="ProductDescLong" />
+          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+          <ScalarProperty Name="ProductQty" ColumnName="ProductQty" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductVendors">
+      <EntityTypeMapping TypeName="SalesOrdersDatabaseModel.ProductVendor">
+        <MappingFragment StoreEntitySet="ProductVendors">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+          <ScalarProperty Name="ProductVendorWholesalePrice" ColumnName="ProductVendorWholesalePrice" />
+          <ScalarProperty Name="ProductVendorDaysToDeliver" ColumnName="ProductVendorDaysToDeliver" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendors">
+      <EntityTypeMapping TypeName="SalesOrdersDatabaseModel.Vendor">
+        <MappingFragment StoreEntitySet="Vendors">
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="VendorStreetAddress" ColumnName="VendorStreetAddress" />
+          <ScalarProperty Name="VendorCity" ColumnName="VendorCity" />
+          <ScalarProperty Name="VendorState" ColumnName="VendorState" />
+          <ScalarProperty Name="VendorZipCode" ColumnName="VendorZipCode" />
+          <ScalarProperty Name="VendorPhoneNumber" ColumnName="VendorPhoneNumber" />
+          <ScalarProperty Name="VendorFaxNumber" ColumnName="VendorFaxNumber" />
+          <ScalarProperty Name="VendorWebPage" ColumnName="VendorWebPage" />
+          <ScalarProperty Name="VendorEMailAddress" ColumnName="VendorEMailAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

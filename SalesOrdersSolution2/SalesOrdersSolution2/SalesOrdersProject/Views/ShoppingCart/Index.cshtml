@@ -1,0 +1,75 @@
+﻿@model SalesOrdersProject.Models.ShoppingCartViewModel
+
+@{
+    ViewBag.Title = "Bike Store Shopping Cart";
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=" device-width" />
+    <title>Bike Shop Shopping Cart</title>
+</head>
+<body style="background-color:lightgray; font-size:16px">
+    <br />
+    <br />
+    <h2>Shopping Cart</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Quantity</th>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.Cart.Items)
+            {
+                <tr>
+                    <td>@item.Quantity</td>
+                    <td>@item.Product.ProductName</td>
+                    <td>@item.Product.ProductPrice</td>
+                    <td>@(item.Quantity * item.Product.ProductPrice)</td>
+
+                    <!-- Button below will not be operational -->
+                    <td>
+                        @using (Html.BeginForm("RemoveFromCart", "ShoppingCart"))
+                        {
+                            @Html.Hidden("ProductId", item.Product.ProductID)
+                            @Html.HiddenFor(x => x.ReturnUrl)
+                            <input class="btn btn-sm btn-warning"
+                                   type="submit" value="Remove" />
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="3">Total:</td>
+                <td>@Model.Cart.GetCartTotal().ToString("c")</td>
+
+            </tr>
+        </tfoot>
+    </table>
+
+    <div>
+        <a class="btn btn-primary" href="@Model.ReturnUrl">
+            Continue Shopping
+        </a>
+
+        <!-- Button below will not be operational -->
+        @Html.ActionLink("Checkout", "ShippingInfo", null,
+                         new { @class = "btn btn-primary" })
+        <img style="float:right" src="https://gamepedia.cursecdn.com/fortnite_gamepedia/thumb/0/08/Shopping_cart_icon.png/128px-Shopping_cart_icon.png?version=0d0787a2814ea7eab3cf8e0db1b5ac7e" />
+        <br style="clear:both" />
+
+    </div>
+</body>
+</html>
+
+
+

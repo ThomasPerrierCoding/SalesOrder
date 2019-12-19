@@ -1,0 +1,156 @@
+﻿@{
+    ViewBag.Title = "Bike Store Contact Form";
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=" device-width" />
+    <title>Bike Shop Contact</title>
+</head>
+
+<body style="background-color:lightgray; font-size:16px">
+    <br /><br /><br />
+    <div>
+        <h5>All fields marked with  <span class="red">*</span> are REQUIERED.</h5>
+        <form action="/Home/Contact" id="ContactForm" method="post">
+            <span>First Name:  </span>
+            <input class="form-control" id="FirstName" name="FirstName" required="required" type="text" value="" /><span class="red">*</span>
+            <br />
+            <img style="float:right" src="https://i.imgur.com/M6l6EqU.png" />
+            <br />
+            <span>Last Name:  </span>
+            <input class="form-control" id="LastName" name="LastName" required="required" type="text" value="" /><span class="red">*</span>
+            <br />
+            <br />
+            <span>Address:  </span>
+            <input class="form-control" id="Address" name="Address" required="required" type="text" value="" /><span class="red">*</span>
+            <br />
+            <br />
+            <span>City:  </span>
+            <input class="form-control" id="City" name="City" required="required" type="text" value="" /><span class="red">*</span>
+            <br />
+            <br />
+            <span>State:  </span>
+            <select class="form-control" name="State">
+                <option>-Please Select Your State-</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+            </select>
+            <br />
+            <br />
+            <span>Zip Code:  </span>
+            <input class="form-control" id="ZIP" name="ZIP" required="required" type="number" value="" /><span class="red">*</span>
+            <br />
+            <br />
+            <span>Cell Phone:  </span>
+            <input class="form-control" id="Cell" name="Cell" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required="required" type="tel" value="" /><span> </span><span class="red">*</span>
+            <br />
+            <br />
+            <span>Gender:  </span><input type="radio" name="gender" value="male" required><span>Male</span> <span>
+            </span><input type="radio" name="gender" value="female" required><span>Female</span><span class="red">*</span>
+            <br />
+            <br />
+            <span>Age:  </span><input type="radio" name="age" value="16-30" required><span>16-30</span> <span> </span>
+            <input type="radio" name="age" value="31-50" required><span>31-50</span> <span> </span>
+            <input type="radio" name="age" value="Over 50" required><span>Over 50</span><span class="red">*</span>
+            <br />
+            <br />
+            <div class="checkboxes-wrapper">
+                <span>Reason For Email:  </span>
+                <input id="radio-for-checkboxes" type="radio" name="radio-for-required-checkboxes" required><span>Sign up for our newsletter</span> <span> </span>
+                <input type="checkbox" name="option[]" value="Ask for a price quote"><span>Ask for a price quote</span> <span> </span>
+                <input type="checkbox" name="option[]" value="Schedule an Appointment"><span>Schedule an Appointment</span> <span> </span>
+            </div>
+            <br />
+            <br />
+            <input type="submit" id="submit" value="Submit" /> <span>  </span> <input type="reset" value="Clear" />
+        </form>
+    </div>
+</body>
+</html>
+<style type="text/css">
+    .red {
+        color: red;
+    }
+
+    .checkboxs-wrapper {
+        position: relative;
+    }
+
+        .checkboxs-wrapper input[name="radio-for-required-checkboxes"] {
+            position: absolute;
+            margin: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-appearance: none;
+            pointer-events: none;
+            border: none;
+            background: none;
+        }
+</style>
+<script>
+    var inputs = document.querySelectorAll('[name="option[]"]')
+    var radioForCheckboxes = document.getElementById('radio-for-checkboxes')
+    function checkCheckboxes() {
+        var isAtLeastOneServiceSelected = false;
+        for (var i = inputs.length - 1; i >= 0; --i) {
+            if (inputs[i].checked) isAtLeastOneCheckboxSelected = true;
+        }
+        radioForCheckboxes.checked = isAtLeastOneCheckboxSelected
+    }
+    for (var i = inputs.length - 1; i >= 0; --i) {
+        inputs[i].addEventListener('change', checkCheckboxes)
+    }
+</script>

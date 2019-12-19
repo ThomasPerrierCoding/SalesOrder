@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SalesOrdersDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryDescription" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="Self.ProductsFK00" FromRole="Categories" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerFirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerLastName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerStreetAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerCity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerState" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerAreaCode" Type="Int16" />
+    <Property Name="CustomerPhoneNumber" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orders" Relationship="Self.OrdersFK00" FromRole="Customers" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeFirstName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeLastName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeStreetAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeCity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeState" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeAreaCode" Type="Int16" />
+    <Property Name="EmployeePhoneNumber" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orders" Relationship="Self.OrdersFK01" FromRole="Employees" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="OrderDetailQuotedPrice" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="OrderDetailQuantityOrdered" Type="Int32" />
+    <NavigationProperty Name="Order" Relationship="Self.OrderDetailsFK00" FromRole="OrderDetails" ToRole="Orders" />
+    <NavigationProperty Name="Product" Relationship="Self.OrderDetailsFK01" FromRole="OrderDetails" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="OrderShipDate" Type="DateTime" Precision="3" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="EmployeeID" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="Self.OrdersFK00" FromRole="Orders" ToRole="Customers" />
+    <NavigationProperty Name="Employee" Relationship="Self.OrdersFK01" FromRole="Orders" ToRole="Employees" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.OrderDetailsFK00" FromRole="Orders" ToRole="OrderDetails" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductDescShort" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProductDescLong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProductImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProductPrice" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="ProductQty" Type="Int32" />
+    <Property Name="CategoryID" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="Self.ProductsFK00" FromRole="Products" ToRole="Categories" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.OrderDetailsFK01" FromRole="Products" ToRole="OrderDetails" />
+    <NavigationProperty Name="ProductVendors" Relationship="Self.ProductVendorsFK00" FromRole="Products" ToRole="ProductVendors" />
+  </EntityType>
+  <EntityType Name="ProductVendor">
+    <Key>
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="VendorID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="VendorID" Type="Int32" Nullable="false" />
+    <Property Name="ProductVendorWholesalePrice" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="ProductVendorDaysToDeliver" Type="Int16" />
+    <NavigationProperty Name="Product" Relationship="Self.ProductVendorsFK00" FromRole="ProductVendors" ToRole="Products" />
+    <NavigationProperty Name="Vendor" Relationship="Self.ProductVendorsFK01" FromRole="ProductVendors" ToRole="Vendors" />
+  </EntityType>
+  <EntityType Name="Vendor">
+    <Key>
+      <PropertyRef Name="VendorID" />
+    </Key>
+    <Property Name="VendorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VendorName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="VendorStreetAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VendorCity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="VendorState" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="VendorZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="VendorPhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="VendorFaxNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="VendorWebPage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="VendorEMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ProductVendors" Relationship="Self.ProductVendorsFK01" FromRole="Vendors" ToRole="ProductVendors" />
+  </EntityType>
+  <Association Name="ProductsFK00">
+    <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrdersFK00">
+    <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrdersFK01">
+    <End Role="Employees" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderDetailsFK00">
+    <End Role="Orders" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderDetailsFK01">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductVendorsFK00">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductVendors" Type="Self.ProductVendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductVendors">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductVendorsFK01">
+    <End Role="Vendors" Type="Self.Vendor" Multiplicity="1" />
+    <End Role="ProductVendors" Type="Self.ProductVendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendors">
+        <PropertyRef Name="VendorID" />
+      </Principal>
+      <Dependent Role="ProductVendors">
+        <PropertyRef Name="VendorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SalesOrdersDatabaseEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="ProductVendors" EntityType="Self.ProductVendor" />
+    <EntitySet Name="Vendors" EntityType="Self.Vendor" />
+    <AssociationSet Name="ProductsFK00" Association="Self.ProductsFK00">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="OrdersFK00" Association="Self.OrdersFK00">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="OrdersFK01" Association="Self.OrdersFK01">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="OrderDetailsFK00" Association="Self.OrderDetailsFK00">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="OrderDetailsFK01" Association="Self.OrderDetailsFK01">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="ProductVendorsFK00" Association="Self.ProductVendorsFK00">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductVendors" EntitySet="ProductVendors" />
+    </AssociationSet>
+    <AssociationSet Name="ProductVendorsFK01" Association="Self.ProductVendorsFK01">
+      <End Role="Vendors" EntitySet="Vendors" />
+      <End Role="ProductVendors" EntitySet="ProductVendors" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
